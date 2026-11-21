@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDEN PALM — Premium Dates, Nuts & Dried Fruits Malaysia</title>
+    
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDeep: '#0F291E',
+                        emeraldRich: '#163829',
+                        emeraldCard: '#1B4332',
+                        goldPrimary: '#D4AF37',
+                        goldLight: '#E5C158',
+                        goldMuted: '#B89427',
+                        ivoryBg: '#FAF8F5',
+                        ivoryCard: '#FFFFFF',
+                        charcoal: '#1E2421',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-ivoryBg text-charcoal font-sans antialiased selection:bg-goldPrimary selection:text-emeraldDeep overflow-x-hidden">
+
+    <!-- 1. TOP ANNOUNCEMENT BAR -->
+    <div class="bg-emeraldDeep text-ivoryBg text-xs sm:text-sm py-2.5 px-4 border-b border-goldPrimary/25">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center">
+            <div class="flex items-center justify-center gap-2 font-medium tracking-wide">
+                <i class="fa-solid fa-truck-fast text-goldPrimary"></i>
+                <span>FREE West Malaysia Shipping on orders above <strong class="text-goldLight">RM80</strong></span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-ivoryBg/85 text-xs">
+                <span><i class="fa-solid fa-certificate text-goldPrimary mr-1"></i> 100% Halal &amp; Freshly Packed in Malaysia</span>
+                <span class="text-goldPrimary/40">|</span>
+                <a href="#wholesale" class="hover:text-goldLight underline underline-offset-4 transition">Corporate &amp; Wholesale Inquiries</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-emeraldDeep/95 backdrop-blur-md text-ivoryBg border-b border-goldPrimary/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="lg:hidden p-2.5 rounded-xl text-ivoryBg hover:bg-emeraldRich hover:text-goldLight transition">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-goldLight to-goldMuted flex items-center justify-center text-emeraldDeep shadow-md group-hover:scale-105 transition">
+                        <i class="fa-solid fa-seedling text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-lg sm:text-2xl font-bold tracking-wider text-goldLight block leading-none">GOLDEN PALM</span>
+                        <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-ivoryBg/75 block mt-1">Royal Harvest &bull; SnackDap</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+                    <a href="#catalog" onclick="filterProducts('all')" class="hover:text-goldLight transition py-2">Shop All</a>
+                    <a href="#catalog" onclick="filterProducts('dates')" class="hover:text-goldLight transition py-2">Dates</a>
+                    <a href="#catalog" onclick="filterProducts('nuts')" class="hover:text-goldLight transition py-2">Nuts &amp; Berries</a>
+                    <a href="#catalog" onclick="filterProducts('gifts')" class="hover:text-goldLight transition py-2">Gift Boxes</a>
+                    <a href="#packaging" class="hover:text-goldLight transition py-2">Packaging</a>
+                    <a href="#wholesale" class="hover:text-goldLight transition py-2">Wholesale</a>
+                    <a href="#footer" class="hover:text-goldLight transition py-2">Contact</a>
+                </nav>
+
+                <!-- Right Controls: Currency + Cart Trigger -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emeraldRich border border-goldPrimary/30 text-xs font-semibold text-goldLight">
+                        <span>🇲🇾</span>
+                        <span>MYR (RM)</span>
+                    </div>
+
+                    <button onclick="toggleCartDrawer(true)" aria-label="Open Shopping Cart" class="relative flex items-center gap-2.5 bg-goldPrimary hover:bg-goldLight text-emeraldDeep font-bold px-3.5 sm:px-4 py-2.5 rounded-xl shadow-md transition active:scale-95">
+                        <i class="fa-solid fa-bag-shopping text-base"></i>
+                        <span class="hidden sm:inline text-sm">Cart</span>
+                        <span id="cart-badge" class="bg-emeraldDeep text-goldLight text-xs font-extrabold px-2 py-0.5 rounded-full min-w-[22px] text-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Nav -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-emeraldRich border-t border-goldPrimary/20 px-4 pt-3 pb-5 space-y-2">
+            <a href="#catalog" onclick="filterProducts('all'); toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium">Shop All Products</a>
+            <a href="#catalog" onclick="filterProducts('dates'); toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium">Premium Dates</a>
+            <a href="#catalog" onclick="filterProducts('nuts'); toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium">Nuts &amp; Dried Berries</a>
+            <a href="#catalog" onclick="filterProducts('gifts'); toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium">7-Grid Gift Boxes</a>
+            <a href="#wholesale" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium">Wholesale &amp; Bulk (5kg–20kg)</a>
+            <a href="#marketplaces" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg hover:bg-emeraldDeep text-sm font-medium text-goldLight">Shop on Shopee / Lazada / TikTok</a>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section class="relative bg-emeraldDeep text-ivoryBg overflow-hidden">
+        <!-- Subtle decorative radial gold glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.16),transparent_55%)] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Hero Copy -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emeraldRich border border-goldPrimary/40 text-goldLight text-xs sm:text-sm font-semibold tracking-wide">
+                        <i class="fa-solid fa-crown text-goldPrimary"></i>
+                        <span>ROYAL HARVEST &amp; SNACKDAP COLLECTIONS</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                        Nature’s Finest Harvest, <span class="text-goldLight italic">Curated for Every Occasion</span>
+                    </h1>
+
+                    <p class="text-ivoryBg/85 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        From succulent Palestinian Super Jumbo Medjoul &amp; Madinah Ajwa dates to slow-roasted California pistachios and luxury 7-grid festive hampers. Sealed fresh in Malaysia for daily wellness and memorable gifting.
+                    </p>
+
+                    <!-- Hero CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalog" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-goldPrimary to-goldLight hover:brightness-105 text-emeraldDeep font-bold text-sm sm:text-base shadow-xl shadow-black/25 transition flex items-center justify-center gap-2">
+                            <span>Shop Collection</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#catalog" onclick="filterProducts('gifts')" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-emeraldRich hover:bg-emeraldCard border border-goldPrimary/50 text-goldLight font-semibold text-sm sm:text-base transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gift"></i>
+                            <span>Corporate &amp; Festive Gift Boxes</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Highlights -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-goldPrimary/20 max-w-xl mx-auto lg:mx-0 text-left">
+                        <div>
+                            <p class="text-goldLight font-serif text-xl sm:text-2xl font-bold">100%</p>
+                            <p class="text-xs text-ivoryBg/75">Halal &amp; Natural No Added Sugar</p>
+                        </div>
+                        <div>
+                            <p class="text-goldLight font-serif text-xl sm:text-2xl font-bold">24-48h</p>
+                            <p class="text-xs text-ivoryBg/75">Fast Dispatch from Selangor</p>
+                        </div>
+                        <div>
+                            <p class="text-goldLight font-serif text-xl sm:text-2xl font-bold">4.9 ★</p>
+                            <p class="text-xs text-ivoryBg/75">Trusted by 12,000+ Malaysians</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Showcase -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl overflow-hidden border-2 border-goldPrimary/40 shadow-2xl bg-gradient-to-br from-emeraldRich to-emeraldDeep aspect-[4/4] sm:aspect-[4/3] lg:aspect-[4/4]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1596591868231-05e908752cc9?auto=format&fit=crop&w=1000&q=85" 
+                            alt="Golden Palm Medjoul Dates and Roasted Pistachios" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            class="w-full h-full object-cover object-center"
+                        >
+                        <!-- Fallback Visual if Image Fails -->
+                        <div class="hidden w-full h-full flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-emeraldRich via-emeraldDeep to-black">
+                            <i class="fa-solid fa-bowl-food text-6xl text-goldPrimary mb-4"></i>
+                            <p class="font-serif text-2xl text-goldLight font-bold">Royal Harvest Selection</p>
+                            <p class="text-sm text-ivoryBg/75 mt-2">Medjoul Dates &bull; Roasted Pistachios &bull; Aegean Figs</p>
+                        </div>
+
+                        <!-- Floating Product Badge -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-emeraldDeep/90 backdrop-blur-md border border-goldPrimary/40 rounded-2xl p-4 flex items-center justify-between shadow-lg">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-goldLight font-bold">Bestseller Gift Box</span>
+                                <h3 class="font-serif text-base sm:text-lg font-bold text-white">Royal 7-Grid Festive Platter</h3>
+                                <p class="text-xs text-ivoryBg/75">700g Assorted Dates, Nuts &amp; Berries</p>
+                            </div>
+                            <button onclick="quickAddById(9)" class="px-4 py-2.5 rounded-xl bg-goldPrimary hover:bg-goldLight text-emeraldDeep font-bold text-xs sm:text-sm whitespace-nowrap transition">
+                                RM 68 &bull; Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FEATURED COLLECTIONS & INTERACTIVE PRODUCT CATALOG -->
+    <section id="catalog" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-goldMuted">Farm-to-Pouch Freshness</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-emeraldDeep mt-2">Curated Harvest Collection</h2>
+            <p class="text-charcoal/75 text-sm sm:text-base mt-3">
+                Select your preferred pack size — from daily SnackDap resealable pouches to 5kg wholesale cartons.
+            </p>
+        </div>
+
+        <!-- Category Filter Tabs + Search -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+            <div id="category-tabs" class="flex flex-wrap items-center justify-center gap-2">
+                <button data-cat="all" onclick="filterProducts('all')" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emeraldDeep text-goldLight shadow-sm transition">
+                    All Products (9)
+                </button>
+                <button data-cat="dates" onclick="filterProducts('dates')" class="cat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-charcoal border border-emeraldDeep/15 hover:border-goldPrimary transition">
+                    Premium Dates
+                </button>
+                <button data-cat="nuts" onclick="filterProducts('nuts')" class="cat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-charcoal border border-emeraldDeep/15 hover:border-goldPrimary transition">
+                    Roasted &amp; Raw Nuts
+                </button>
+                <button data-cat="fruits" onclick="filterProducts('fruits')" class="cat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-charcoal border border-emeraldDeep/15 hover:border-goldPrimary transition">
+                    Dried Fruits &amp; Berries
+                </button>
+                <button data-cat="gifts" onclick="filterProducts('gifts')" class="cat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-charcoal border border-emeraldDeep/15 hover:border-goldPrimary transition">
+                    Gift Platters
+                </button>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full md:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-charcoal/40 text-sm"></i>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    oninput="handleSearch(this.value)"
+                    placeholder="Search dates, pistachios..." 
+                    class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-emeraldDeep/15 text-sm focus:outline-none focus:border-goldPrimary"
+                >
+            </div>
+        </div>
+
+        <!-- Product Grid Container (Populated via JS) -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Product cards injected cleanly by JavaScript -->
+        </div>
+    </section>
+
+    <!-- 5. SIGNATURE PACKAGING & QUALITY SHOWCASE -->
+    <section id="packaging" class="py-16 sm:py-24 bg-emeraldDeep text-ivoryBg border-y border-goldPrimary/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-goldLight">Designed for Freshness &amp; Gifting</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">Signature Packaging &amp; Quality Promise</h2>
+                <p class="text-ivoryBg/75 text-sm sm:text-base mt-3">
+                    Whether you're keeping snacks crisp on your office desk or presenting a prestigious Raya &amp; corporate hamper, our packaging protects aroma, crunch, and natural moisture.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1: Matte Emerald & Gold Stand-up Pouch -->
+                <div class="bg-emeraldRich/80 border border-goldPrimary/30 rounded-3xl p-7 flex flex-col justify-between hover:border-goldLight transition">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emeraldDeep border border-goldPrimary/40 flex items-center justify-center text-goldLight text-2xl mb-6">
+                            <i class="fa-solid fa-box-archive"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-goldLight">SnackDap Daily Series</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">Matte Emerald &amp; Gold Stand-Up Pouches</h3>
+                        <p class="text-sm text-ivoryBg/80 leading-relaxed">
+                            High-barrier food-grade foil lining with an airtight resealable zip-lock. Blocks humidity in Malaysia's tropical climate so pistachios stay crunchy and Medjoul dates stay soft.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-goldPrimary/20 flex items-center justify-between text-xs text-goldLight font-semibold">
+                        <span>Available in 250g &amp; 500g</span>
+                        <span><i class="fa-solid fa-check-circle mr-1"></i> Resealable Lock</span>
+                    </div>
+                </div>
+
+                <!-- Feature 2: 7-Compartment Luxury Gift Platter -->
+                <div class="bg-gradient-to-b from-emeraldCard to-emeraldRich border-2 border-goldPrimary/60 rounded-3xl p-7 flex flex-col justify-between shadow-xl relative">
+                    <span class="absolute -top-3 right-6 bg-goldPrimary text-emeraldDeep text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full">
+                        Most Gifted
+                    </span>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-goldPrimary text-emeraldDeep flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-goldLight">Royal Harvest Edition</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">7-Grid Luxury Festive Platter Box</h3>
+                        <p class="text-sm text-ivoryBg/85 leading-relaxed">
+                            Rigid gold-foil embossed keepsake box featuring 7 individual compartments filled with Medjoul, Ajwa, Pistachios, Almonds, Macadamias, Figs &amp; Golden Raisins.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-goldPrimary/25 flex items-center justify-between text-xs text-goldLight font-semibold">
+                        <span>Ideal for Ramadan, Raya &amp; CNY</span>
+                        <a href="#catalog" onclick="filterProducts('gifts')" class="underline hover:text-white">Order Box &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Cold-Chain & Halal Assurance -->
+                <div class="bg-emeraldRich/80 border border-goldPrimary/30 rounded-3xl p-7 flex flex-col justify-between hover:border-goldLight transition">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emeraldDeep border border-goldPrimary/40 flex items-center justify-center text-goldLight text-2xl mb-6">
+                            <i class="fa-solid fa-snowflake"></i>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-goldLight">Zero Preservatives</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">Chiller-Stored &amp; Small-Batch Roasted</h3>
+                        <p class="text-sm text-ivoryBg/80 leading-relaxed">
+                            Our imported harvests are stored in temperature-controlled chillers in Selangor and roasted in small weekly batches without artificial glazing, oil, or added refined sugars.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-goldPrimary/20 flex items-center justify-between text-xs text-goldLight font-semibold">
+                        <span>100% Muslim-Friendly &amp; Halal</span>
+                        <span><i class="fa-solid fa-leaf mr-1"></i> Farm Direct</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. MALAYSIAN MARKETPLACES INTEGRATION -->
+    <section id="marketplaces" class="py-14 bg-ivoryBg border-b border-emeraldDeep/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-10 border border-emeraldDeep/10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="text-center lg:text-left max-w-xl">
+                    <span class="text-xs font-bold uppercase tracking-widest text-goldMuted">Official Flagship Stores</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-emeraldDeep mt-1">Prefer Shopping on Your Favorite App?</h2>
+                    <p class="text-sm text-charcoal/75 mt-2">
+                        Find Golden Palm &amp; SnackDap official stores on Malaysia's leading marketplaces with voucher deals and Shopee/TikTok live bundles.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto">
+                    <!-- Shopee -->
+                    <button onclick="showToast('Redirecting to Golden Palm Official Store on Shopee Malaysia...')" class="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#EE4D2D]/10 hover:bg-[#EE4D2D] text-[#EE4D2D] hover:text-white border border-[#EE4D2D]/30 font-bold text-sm transition group">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase opacity-80">Official Mall</span>
+                            <span>Shopee MY</span>
+                        </div>
+                    </button>
+
+                    <!-- Lazada -->
+                    <button onclick="showToast('Redirecting to Golden Palm LazMall Flagship Store...')" class="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#0F146D]/10 hover:bg-[#0F146D] text-[#0F146D] hover:text-white border border-[#0F146D]/30 font-bold text-sm transition">
+                        <i class="fa-solid fa-store text-lg"></i>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase opacity-80">LazMall</span>
+                            <span>Lazada MY</span>
+                        </div>
+                    </button>
+
+                    <!-- TikTok Shop -->
+                    <button onclick="showToast('Opening @GoldenPalmMY on TikTok Shop...')" class="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-charcoal/10 hover:bg-charcoal text-charcoal hover:text-white border border-charcoal/30 font-bold text-sm transition">
+                        <i class="fa-brands fa-tiktok text-lg"></i>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase opacity-80">Live Deals</span>
+                            <span>TikTok Shop</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. WHOLESALE & B2B BULK INQUIRY SECTION -->
+    <section id="wholesale" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-emeraldDeep rounded-3xl overflow-hidden shadow-2xl border border-goldPrimary/30 grid grid-cols-1 lg:grid-cols-12">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-5 p-8 sm:p-12 bg-gradient-to-br from-emeraldRich to-emeraldDeep text-ivoryBg flex flex-col justify-between">
+                <div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-goldPrimary/20 text-goldLight text-xs font-bold uppercase tracking-wider mb-4">
+                        B2B &bull; Cafes &bull; Corporate Events
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Wholesale Cartons &amp; Custom Corporate Hampers
+                    </h2>
+                    <p class="text-ivoryBg/80 text-sm sm:text-base mt-4 leading-relaxed">
+                        Supplying hotels, artisanal bakeries, specialty cafes, wedding planners, and corporate HR teams across Malaysia with 5kg, 10kg, and 20kg bulk cartons or custom-branded gift boxes.
+                    </p>
+
+                    <ul class="space-y-3 mt-6 text-sm text-ivoryBg/90">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-goldPrimary"></i>
+                            <span>Tiered wholesale pricing starting from 5kg cartons</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-goldPrimary"></i>
+                            <span>Custom company logo sleeve &amp; greeting cards (MOQ 30 boxes)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-goldPrimary"></i>
+                            <span>Official SSM invoice &amp; Lalamove / Klang Valley pallet delivery</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-goldPrimary/20 text-xs text-ivoryBg/75">
+                    <p class="font-semibold text-goldLight text-sm mb-1">Direct Wholesale Desk</p>
+                    <p><i class="fa-brands fa-whatsapp text-goldPrimary mr-1.5"></i> +60 12-388 9420 (Subang / Petaling Jaya Hub)</p>
+                </div>
+            </div>
+
+            <!-- Right Interactive Quote Form -->
+            <div class="lg:col-span-7 p-8 sm:p-12 bg-white">
+                <h3 class="font-serif text-2xl font-bold text-emeraldDeep mb-2">Request a Wholesale / Corporate Quote</h3>
+                <p class="text-sm text-charcoal/70 mb-6">Fill in your requirements and generate an instant quote request via WhatsApp or email.</p>
+
+                <form id="wholesale-form" onsubmit="submitWholesaleForm(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-charcoal/75 mb-1.5">Full Name *</label>
+                            <input type="text" id="ws-name" required placeholder="e.g., Aina Sofea" class="w-full px-4 py-3 rounded-xl border border-emeraldDeep/20 text-sm focus:outline-none focus:border-goldPrimary">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-charcoal/75 mb-1.5">Company / Cafe Name *</label>
+                            <input type="text" id="ws-company" required placeholder="e.g., Kopi &amp; Crumb Sdn Bhd" class="w-full px-4 py-3 rounded-xl border border-emeraldDeep/20 text-sm focus:outline-none focus:border-goldPrimary">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-charcoal/75 mb-1.5">WhatsApp Number *</label>
+                            <input type="tel" id="ws-phone" required placeholder="e.g., 012-345 6789" class="w-full px-4 py-3 rounded-xl border border-emeraldDeep/20 text-sm focus:outline-none focus:border-goldPrimary">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-charcoal/75 mb-1.5">Order Volume / Category</label>
+                            <select id="ws-volume" class="w-full px-4 py-3 rounded-xl border border-emeraldDeep/20 text-sm bg-white focus:outline-none focus:border-goldPrimary">
+                                <option value="5kg - 10kg Bulk Cartons">5kg – 10kg Bulk Cartons (Cafe / Bakery)</option>
+                                <option value="20kg+ Wholesale Distributor">20kg+ Wholesale / Reseller Carton</option>
+                                <option value="30 - 100 Corporate Gift Boxes">30 – 100 Corporate 7-Grid Gift Boxes</option>
+                                <option value="100+ Custom Festive Hampers">100+ Custom Branded Festive Hampers</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-charcoal/75 mb-1.5">Items of Interest &amp; Target Delivery Date</label>
+                        <textarea id="ws-notes" rows="3" required placeholder="e.g., Looking for 2 cartons of Super Jumbo Medjoul (5kg each) and 10kg Roasted California Pistachios for next month..." class="w-full px-4 py-3 rounded-xl border border-emeraldDeep/20 text-sm focus:outline-none focus:border-goldPrimary"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-emeraldDeep hover:bg-emeraldRich text-goldLight font-bold text-sm sm:text-base shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg text-green-400"></i>
+                        <span>Send Wholesale Inquiry via WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer id="footer" class="bg-emeraldDeep text-ivoryBg pt-16 pb-10 border-t border-goldPrimary/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-goldPrimary/20">
+                
+                <!-- Col 1: Brand & SSM -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-goldPrimary flex items-center justify-center text-emeraldDeep">
+                            <i class="fa-solid fa-seedling text-lg"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-wider text-goldLight">GOLDEN PALM</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-ivoryBg/75 leading-relaxed">
+                        Curating nature's finest Medjoul dates, Ajwa harvests, roasted California nuts, and sun-dried fruits for discerning Malaysian homes and businesses.
+                    </p>
+                    <div class="text-xs text-ivoryBg/60 space-y-1">
+                        <p><strong class="text-goldLight">Golden Palm Harvest Sdn. Bhd.</strong></p>
+                        <p>SSM Reg: 202301041892 (1535808-K)</p>
+                        <p>No. 18, Jalan PJS 11/24, Bandar Sunway, 47500 Subang Jaya, Selangor.</p>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldLight mb-4">Collections</h4>
+                    <ul class="space-y-2.5 text-sm text-ivoryBg/80">
+                        <li><a href="#catalog" onclick="filterProducts('dates')" class="hover:text-goldLight transition">Palestinian &amp; Jordanian Medjoul</a></li>
+                        <li><a href="#catalog" onclick="filterProducts('dates')" class="hover:text-goldLight transition">Madinah Ajwa &amp; Mariami Dates</a></li>
+                        <li><a href="#catalog" onclick="filterProducts('nuts')" class="hover:text-goldLight transition">Roasted California Pistachios</a></li>
+                        <li><a href="#catalog" onclick="filterProducts('fruits')" class="hover:text-goldLight transition">Aegean Figs &amp; Golden Raisins</a></li>
+                        <li><a href="#catalog" onclick="filterProducts('gifts')" class="hover:text-goldLight transition">7-Grid Royal Festive Gift Box</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Storage & Care Tips -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldLight mb-4">Freshness &amp; Storage</h4>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-ivoryBg/80">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-temperature-low text-goldPrimary mt-1"></i>
+                            <span>Store Medjoul &amp; Ajwa dates in the chiller (4°C) to preserve caramel softness for up to 12 months.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-lock text-goldPrimary mt-1"></i>
+                            <span>Press out air before sealing our matte gold zip-lock pouch after every snack session.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-goldLight mb-4">Join the Harvest Club</h4>
+                    <p class="text-xs sm:text-sm text-ivoryBg/75 mb-4">
+                        Get 10% off your first order plus early access to Ramadan &amp; Raya gift box pre-orders.
+                    </p>
+                    <form onsubmit="subscribeNewsletter(event)" class="space-y-2.5">
+                        <input type="email" id="newsletter-email" required placeholder="Enter your email address" class="w-full px-4 py-3 rounded-xl bg-emeraldRich border border-goldPrimary/30 text-sm text-white placeholder:text-ivoryBg/45 focus:outline-none focus:border-goldLight">
+                        <button type="submit" class="w-full py-3 rounded-xl bg-goldPrimary hover:bg-goldLight text-emeraldDeep font-bold text-sm transition">
+                            Claim 10% Voucher
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ivoryBg/60">
+                <p>&copy; 2026 Golden Palm Harvest Sdn. Bhd. All rights reserved.</p>
+                <div class="flex items-center gap-5">
+                    <span>Halal Compliant</span>
+                    <span>&bull;</span>
+                    <span>FPX / GrabPay / Touch 'n Go / WhatsApp Order</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QUICK VIEW PRODUCT MODAL -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-goldPrimary/40 animate-fadeIn">
+            <div id="qv-content" class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE-OVER SHOPPING CART DRAWER -->
+    <div id="cart-overlay" onclick="toggleCartDrawer(false)" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs transition-opacity"></div>
+    <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-ivoryBg shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col border-l border-goldPrimary/30">
+        
+        <!-- Drawer Header -->
+        <div class="bg-emeraldDeep text-ivoryBg p-5 flex items-center justify-between border-b border-goldPrimary/25">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-bag-shopping text-goldLight text-lg"></i>
+                <h3 class="font-serif text-xl font-bold text-white">Your Harvest Bag</h3>
+            </div>
+            <button onclick="toggleCartDrawer(false)" aria-label="Close Cart" class="p-2 rounded-xl hover:bg-emeraldRich text-ivoryBg/80 hover:text-white transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Free Shipping Progress Bar -->
+        <div class="bg-emeraldRich text-ivoryBg px-5 py-3 text-xs border-b border-goldPrimary/20">
+            <div class="flex items-center justify-between mb-1.5">
+                <span id="shipping-msg">Add <strong>RM 80.00</strong> for FREE West Malaysia shipping!</span>
+                <span id="shipping-pct" class="text-goldLight font-bold">0%</span>
+            </div>
+            <div class="w-full h-2 bg-emeraldDeep rounded-full overflow-hidden">
+                <div id="shipping-bar" class="h-full bg-gradient-to-r from-goldPrimary to-goldLight transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4">
+            <!-- Cart items populated via JS -->
+        </div>
+
+        <!-- Cart Footer / Checkout Controls -->
+        <div class="bg-white border-t border-emeraldDeep/15 p-5 space-y-4 shadow-inner">
+            <!-- Delivery Region Selector -->
+            <div class="flex items-center justify-between text-xs">
+                <label for="delivery-region" class="font-bold text-charcoal/80">Delivery Region:</label>
+                <select id="delivery-region" onchange="renderCart()" class="px-3 py-1.5 rounded-lg border border-emeraldDeep/20 bg-ivoryBg font-semibold text-emeraldDeep focus:outline-none">
+                    <option value="west">West Malaysia (Free &ge; RM80, else RM8)</option>
+                    <option value="east">East Malaysia — Sabah/Sarawak (RM18)</option>
+                </select>
+            </div>
+
+            <!-- Totals -->
+            <div class="space-y-1.5 text-sm border-t border-emeraldDeep/10 pt-3">
+                <div class="flex justify-between text-charcoal/75">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">RM 0.00</span>
+                </div>
+                <div class="flex justify-between text-charcoal/75">
+                    <span>Shipping</span>
+                    <span id="cart-shipping">RM 0.00</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-emeraldDeep pt-1.5 border-t border-emeraldDeep/10">
+                    <span>Total (MYR)</span>
+                    <span id="cart-total" class="text-lg">RM 0.00</span>
+                </div>
+            </div>
+
+            <!-- Checkout Action Buttons -->
+            <div class="grid grid-cols-1 gap-2.5 pt-1">
+                <button onclick="checkoutViaWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-[#1E8E3E] hover:bg-[#187733] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Order via WhatsApp (Instant Receipt)</span>
+                </button>
+                <button onclick="confirmDirectOrder()" class="w-full py-3 px-4 rounded-xl bg-emeraldDeep hover:bg-emeraldRich text-goldLight font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Quick Express Checkout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ORDER CONFIRMATION MODAL (No alert() used!) -->
+    <div id="order-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-md w-full p-7 text-center border-2 border-goldPrimary shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-emeraldDeep text-goldLight flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-emeraldDeep">Order Summary Ready!</h3>
+            <p id="order-modal-desc" class="text-sm text-charcoal/75 mt-2 leading-relaxed">
+                Thank you for choosing Golden Palm. Your harvest order has been logged.
+            </p>
+            <div id="order-summary-box" class="mt-4 p-4 rounded-2xl bg-ivoryBg border border-emeraldDeep/10 text-left text-xs font-mono text-charcoal max-h-44 overflow-y-auto whitespace-pre-line"></div>
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <button onclick="copyOrderText()" class="flex-1 py-3 px-4 rounded-xl border border-emeraldDeep text-emeraldDeep font-bold text-xs hover:bg-ivoryBg transition">
+                    <i class="fa-regular fa-copy mr-1"></i> Copy Order Slip
+                </button>
+                <button onclick="closeOrderModal()" class="flex-1 py-3 px-4 rounded-xl bg-emeraldDeep text-goldLight font-bold text-xs hover:bg-emeraldRich transition">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform translate-y-3">
+        <div class="bg-emeraldDeep text-ivoryBg border border-goldPrimary/50 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs sm:text-sm font-medium">
+            <i class="fa-solid fa-circle-check text-goldLight text-base"></i>
+            <span id="toast-text">Added to your Harvest Bag</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // ==========================================
+        // 1. PRODUCT CATALOG DATA (9 Authentic SKUs)
+        // ==========================================
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Super Jumbo Medjoul Dates",
+                category: "dates",
+                origin: "Palestine / Jordan",
+                badge: "King of Dates",
+                description: "Prized for their large size, rich caramel notes, and velvety soft texture. Hand-selected Grade A Super Jumbo harvest.",
+                image: "https://images.unsplash.com/photo-1610450949065-1f2841536c88?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g Matte Pouch", price: 21.00 },
+                    { label: "500g Matte Pouch", price: 38.00, default: true },
+                    { label: "5kg Wholesale Carton", price: 310.00 }
+                ]
+            },
+            {
+                id: 2,
+                name: "Madinah Ajwa Jumbo Dates",
+                category: "dates",
+                origin: "Al-Madinah, Saudi Arabia",
+                badge: "Sunnah Harvest",
+                description: "Authentic dark-hued Ajwa dates cultivated in Madinah Al-Munawwarah with a delicate fruity sweetness and fine wrinkles.",
+                image: "https://images.unsplash.com/photo-1584305574647-0cc949a2bb9f?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g Matte Pouch", price: 24.00 },
+                    { label: "500g Matte Pouch", price: 42.00, default: true },
+                    { label: "5kg Wholesale Carton", price: 350.00 }
+                ]
+            },
+            {
+                id: 3,
+                name: "Mariami Grade A Dates",
+                category: "dates",
+                origin: "Piarom Region",
+                badge: "Daily Favorite",
+                description: "Semi-dry, elongated dark mahogany dates with a mild toffee sweetness—ideal for daily snacking and energy bowls.",
+                image: "https://images.unsplash.com/photo-1596591868231-05e908752cc9?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "500g Matte Pouch", price: 22.00, default: true },
+                    { label: "1kg Family Pack", price: 40.00 },
+                    { label: "10kg Wholesale Carton", price: 320.00 }
+                ]
+            },
+            {
+                id: 4,
+                name: "California Roasted Pistachios (No Skin AA)",
+                category: "nuts",
+                origin: "California, USA",
+                badge: "Extra Crunchy",
+                description: "Naturally opened AA-grade California pistachios, lightly sea-salted and slow-roasted in small batches for maximum crunch.",
+                image: "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g SnackDap Pouch", price: 34.00, default: true },
+                    { label: "500g Matte Pouch", price: 64.00 },
+                    { label: "5kg Wholesale Carton", price: 540.00 }
+                ]
+            },
+            {
+                id: 5,
+                name: "Roasted California Almonds",
+                category: "nuts",
+                origin: "California, USA",
+                badge: "Heart Healthy",
+                description: "Whole Nonpareil almonds dry-roasted without oil to bring out their natural nutty aroma and satisfying snap.",
+                image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g SnackDap Pouch", price: 24.00, default: true },
+                    { label: "500g Matte Pouch", price: 44.00 },
+                    { label: "5kg Wholesale Carton", price: 360.00 }
+                ]
+            },
+            {
+                id: 6,
+                name: "Macadamia & Berry Deluxe Mix",
+                category: "nuts",
+                origin: "Australia & USA Blend",
+                badge: "SnackDap Signature",
+                description: "Buttery Australian macadamias, roasted cashews, almonds, and tangy cranberries—crafted for guilt-free office snacking.",
+                image: "https://images.unsplash.com/photo-1536591375667-f4c158a08265?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g SnackDap Pouch", price: 36.00, default: true },
+                    { label: "500g Matte Pouch", price: 68.00 }
+                ]
+            },
+            {
+                id: 7,
+                name: "Aegean Sun-Dried Figs",
+                category: "fruits",
+                origin: "Aydın, Turkey",
+                badge: "High Fiber",
+                description: "Plump, honey-sweet Turkish Mountain Figs ripened under the Aegean sun with zero added sugar or sulfur.",
+                image: "https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "250g Matte Pouch", price: 28.00, default: true },
+                    { label: "500g Matte Pouch", price: 52.00 },
+                    { label: "5kg Wholesale Carton", price: 420.00 }
+                ]
+            },
+            {
+                id: 8,
+                name: "Long Golden Raisins & Turkish Apricots Duo",
+                category: "fruits",
+                origin: "Turkey & Uzbekistan",
+                badge: "Value Duo",
+                description: "A vibrant pairing of juicy jumbo golden raisins and tender sun-cured Turkish apricots rich in potassium and antioxidants.",
+                image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "300g Matte Pouch", price: 21.00, default: true },
+                    { label: "600g Family Pouch", price: 39.00 }
+                ]
+            },
+            {
+                id: 9,
+                name: "Royal 7-Grid Festive Platter Box",
+                category: "gifts",
+                origin: "Curated in Malaysia",
+                badge: "Luxury Gift Box",
+                description: "700g signature gold-embossed 7-compartment box featuring Medjoul, Ajwa, Pistachios, Almonds, Macadamias, Figs & Golden Raisins.",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
+                variants: [
+                    { label: "700g 7-Grid Gift Box + Gift Bag", price: 68.00, default: true },
+                    { label: "Bundle of 5 Gift Boxes (Corporate)", price: 320.00 }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 2. APPLICATION STATE
+        // ==========================================
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let selectedVariants = {}; // { productId: variantIndex }
+        let cart = []; // [{ key, productId, name, variantLabel, price, qty, image }]
+
+        // Initialize default variant selections
+        PRODUCTS.forEach(p => {
+            const defIdx = p.variants.findIndex(v => v.default);
+            selectedVariants[p.id] = defIdx >= 0 ? defIdx : 0;
+        });
+
+        // ==========================================
+        // 3. RENDER PRODUCT CATALOG
+        // ==========================================
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const filtered = PRODUCTS.filter(p => {
+                const matchesCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      p.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      p.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-16 bg-white rounded-3xl border border-emeraldDeep/10">
+                        <i class="fa-solid fa-seedling text-4xl text-goldPrimary mb-3"></i>
+                        <h3 class="font-serif text-xl font-bold text-emeraldDeep">No harvests matched your search</h3>
+                        <p class="text-sm text-charcoal/70 mt-1">Try clearing your search or viewing all collections.</p>
+                        <button onclick="filterProducts('all'); document.getElementById('search-input').value=''; searchQuery=''; renderProducts();" class="mt-4 px-5 py-2.5 rounded-xl bg-emeraldDeep text-goldLight text-xs font-bold">
+                            Reset Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(product => {
+                const activeVarIdx = selectedVariants[product.id] || 0;
+                const activeVar = product.variants[activeVarIdx];
+
+                const variantButtons = product.variants.map((v, idx) => `
+                    <button 
+                        onclick="selectVariant(${product.id}, ${idx})"
+                        class="px-2.5 py-1.5 rounded-lg text-[11px] font-semibold border transition ${
+                            idx === activeVarIdx 
+                            ? 'bg-emeraldDeep text-goldLight border-emeraldDeep shadow-xs' 
+                            : 'bg-ivoryBg text-charcoal/80 border-emeraldDeep/15 hover:border-goldPrimary'
+                        }">
+                        ${v.label.split(' ')[0]}
+                    </button>
+                `).join('');
+
+                return `
+                    <div class="bg-white rounded-3xl overflow-hidden border border-emeraldDeep/10 shadow-sm hover:shadow-xl hover:border-goldPrimary/50 transition duration-300 flex flex-col justify-between group">
+                        <div>
+                            <!-- Product Image Wrapper -->
+                            <div class="relative aspect-[4/3] bg-gradient-to-br from-emeraldRich to-emeraldDeep overflow-hidden">
+                                <img 
+                                    src="${product.image}" 
+                                    alt="${product.name}" 
+                                    loading="lazy"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                >
+                                <!-- Image Fallback -->
+                                <div class="hidden w-full h-full flex-col items-center justify-center p-6 text-center text-ivoryBg">
+                                    <i class="fa-solid fa-seedling text-4xl text-goldPrimary mb-2"></i>
+                                    <span class="font-serif text-lg font-bold text-goldLight">${product.name}</span>
+                                </div>
+
+                                <!-- Origin & Highlight Badges -->
+                                <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                                    <span class="px-3 py-1 rounded-full bg-emeraldDeep/90 backdrop-blur-xs text-goldLight text-[11px] font-bold tracking-wide border border-goldPrimary/30">
+                                        ${product.badge}
+                                    </span>
+                                </div>
+
+                                <!-- Quick View Trigger -->
+                                <button onclick="openQuickView(${product.id})" aria-label="Quick View ${product.name}" class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/95 hover:bg-goldPrimary text-emeraldDeep shadow-md flex items-center justify-center transition">
+                                    <i class="fa-solid fa-eye text-sm"></i>
+                                </button>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-5 sm:p-6">
+                                <div class="flex items-center justify-between text-xs text-goldMuted font-bold uppercase tracking-wider mb-1">
+                                    <span><i class="fa-solid fa-location-dot mr-1"></i>${product.origin}</span>
+                                </div>
+                                <h3 class="font-serif text-xl font-bold text-emeraldDeep leading-snug">${product.name}</h3>
+                                <p class="text-xs sm:text-sm text-charcoal/70 mt-2 line-clamp-2 leading-relaxed">
+                                    ${product.description}
+                                </p>
+
+                                <!-- Packaging Selector -->
+                                <div class="mt-4">
+                                    <span class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/60 mb-1.5">
+                                        Pack Size: <strong class="text-emeraldDeep">${activeVar.label}</strong>
+                                    </span>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        ${variantButtons}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer: Price & Add Button -->
+                        <div class="px-5 sm:px-6 pb-6 pt-3 border-t border-emeraldDeep/10 flex items-center justify-between gap-3">
+                            <div>
+                                <span class="text-[11px] text-charcoal/60 block">Price (MYR)</span>
+                                <span class="font-serif text-2xl font-bold text-emeraldDeep">RM ${activeVar.price.toFixed(2)}</span>
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="px-5 py-3 rounded-xl bg-emeraldDeep hover:bg-emeraldRich text-goldLight font-bold text-xs sm:text-sm shadow-md active:scale-95 transition flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add to Bag</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterProducts(category) {
+            currentCategory = category;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = "cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emeraldDeep text-goldLight shadow-sm transition";
+                } else {
+                    btn.className = "cat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-charcoal border border-emeraldDeep/15 hover:border-goldPrimary transition";
+                }
+            });
+            renderProducts();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val.trim();
+            renderProducts();
+        }
+
+        function selectVariant(productId, variantIdx) {
+            selectedVariants[productId] = variantIdx;
+            renderProducts();
+        }
+
+        // ==========================================
+        // 4. QUICK VIEW MODAL
+        // ==========================================
+        function openQuickView(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            const activeVarIdx = selectedVariants[product.id] || 0;
+            const activeVar = product.variants[activeVarIdx];
+
+            const modal = document.getElementById('quick-view-modal');
+            const content = document.getElementById('qv-content');
+
+            content.innerHTML = `
+                <div class="bg-emeraldDeep relative min-h-[260px]">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emeraldDeep/90 text-goldLight text-xs font-bold border border-goldPrimary/40">${product.badge}</span>
+                </div>
+                <div class="p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-goldMuted">${product.origin}</span>
+                            <button onclick="closeQuickView()" class="p-1.5 rounded-lg hover:bg-ivoryBg text-charcoal/60 hover:text-charcoal">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </button>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-emeraldDeep mt-1">${product.name}</h3>
+                        <p class="text-sm text-charcoal/80 mt-3 leading-relaxed">${product.description}</p>
+                        
+                        <div class="mt-5 p-3.5 rounded-2xl bg-ivoryBg border border-emeraldDeep/10 text-xs space-y-1.5">
+                            <p><strong class="text-emeraldDeep">Selected Pack:</strong> ${activeVar.label}</p>
+                            <p><strong class="text-emeraldDeep">Certification:</strong> 100% Halal &amp; Freshly Sealed in Malaysia</p>
+                            <p><strong class="text-emeraldDeep">Storage:</strong> Keep refrigerated for maximum freshness</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-emeraldDeep/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-charcoal/60 block">Total Price</span>
+                            <span class="font-serif text-2xl font-bold text-emeraldDeep">RM ${activeVar.price.toFixed(2)}</span>
+                        </div>
+                        <button onclick="addToCart(${product.id}); closeQuickView();" class="px-6 py-3.5 rounded-xl bg-goldPrimary hover:bg-goldLight text-emeraldDeep font-bold text-sm shadow-md transition">
+                            Add to Harvest Bag
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quick-view-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // ==========================================
+        // 5. SHOPPING CART & WHATSAPP ORDER LOGIC
+        // ==========================================
+        function addToCart(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            const varIdx = selectedVariants[productId] || 0;
+            const variant = product.variants[varIdx];
+            const key = `${productId}-${varIdx}`;
+
+            const existing = cart.find(item => item.key === key);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({
+                    key,
+                    productId: product.id,
+                    name: product.name,
+                    variantLabel: variant.label,
+                    price: variant.price,
+                    qty: 1,
+                    image: product.image
+                });
+            }
+
+            renderCart();
+            showToast(`Added ${product.name} (${variant.label})`);
+        }
+
+        function quickAddById(productId) {
+            addToCart(productId);
+            toggleCartDrawer(true);
+        }
+
+        function updateQty(key, delta) {
+            const item = cart.find(i => i.key === key);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.key !== key);
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            const badge = document.getElementById('cart-badge');
+            const container = document.getElementById('cart-items-container');
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            badge.textContent = totalItems;
+
+            // Free shipping progress (RM80 threshold for West Malaysia)
+            const threshold = 80;
+            const pct = Math.min(100, Math.round((subtotal / threshold) * 100));
+            document.getElementById('shipping-bar').style.width = `${pct}%`;
+            document.getElementById('shipping-pct').textContent = `${pct}%`;
+
+            const region = document.getElementById('delivery-region').value;
+            let shippingFee = 0;
+
+            if (subtotal === 0) {
+                shippingFee = 0;
+                document.getElementById('shipping-msg').innerHTML = `Add <strong>RM 80.00</strong> for FREE West Malaysia shipping!`;
+            } else if (region === 'east') {
+                shippingFee = 18.00;
+                document.getElementById('shipping-msg').innerHTML = `East Malaysia flat-rate shipping: <strong>RM 18.00</strong>`;
+            } else if (subtotal >= threshold) {
+                shippingFee = 0;
+                document.getElementById('shipping-msg').innerHTML = `<i class="fa-solid fa-party-horn text-goldLight mr-1"></i> Unlocked <strong>FREE West Malaysia Shipping!</strong>`;
+            } else {
+                shippingFee = 8.00;
+                const diff = (threshold - subtotal).toFixed(2);
+                document.getElementById('shipping-msg').innerHTML = `Add <strong>RM ${diff}</strong> more for FREE West Malaysia shipping!`;
+            }
+
+            const grandTotal = subtotal + shippingFee;
+
+            document.getElementById('cart-subtotal').textContent = `RM ${subtotal.toFixed(2)}`;
+            document.getElementById('cart-shipping').textContent = shippingFee === 0 && subtotal > 0 ? 'FREE' : `RM ${shippingFee.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `RM ${grandTotal.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-14 px-4">
+                        <div class="w-16 h-16 rounded-full bg-emeraldDeep/10 text-emeraldDeep flex items-center justify-center text-2xl mx-auto mb-3">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-emeraldDeep">Your Harvest Bag is Empty</h4>
+                        <p class="text-xs text-charcoal/65 mt-1">Explore our Medjoul dates, roasted pistachios, and 7-grid gift boxes.</p>
+                        <button onclick="toggleCartDrawer(false)" class="mt-5 px-5 py-2.5 rounded-xl bg-emeraldDeep text-goldLight text-xs font-bold">
+                            Browse Collection
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="bg-white p-3.5 rounded-2xl border border-emeraldDeep/10 flex items-center gap-3.5 shadow-xs">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'" class="w-16 h-16 rounded-xl object-cover bg-emeraldDeep shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-serif text-sm font-bold text-emeraldDeep truncate">${item.name}</h4>
+                        <p class="text-[11px] text-charcoal/65">${item.variantLabel}</p>
+                        <p class="text-xs font-bold text-goldMuted mt-1">RM ${(item.price * item.qty).toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center gap-1.5 bg-ivoryBg border border-emeraldDeep/15 rounded-xl p-1">
+                        <button onclick="updateQty('${item.key}', -1)" class="w-7 h-7 rounded-lg hover:bg-white text-emeraldDeep font-bold text-xs flex items-center justify-center">-</button>
+                        <span class="w-5 text-center text-xs font-bold">${item.qty}</span>
+                        <button onclick="updateQty('${item.key}', 1)" class="w-7 h-7 rounded-lg hover:bg-white text-emeraldDeep font-bold text-xs flex items-center justify-center">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (open) {
+                overlay.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function buildOrderSummaryText() {
+            const region = document.getElementById('delivery-region').value === 'west' ? 'West Malaysia' : 'East Malaysia (Sabah/Sarawak)';
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = region === 'West Malaysia' ? (subtotal >= 80 ? 0 : 8) : 18;
+            const total = subtotal + shipping;
+
+            const lines = cart.map((item, idx) => `${idx + 1}. ${item.name} [${item.variantLabel}] x${item.qty} = RM ${(item.price * item.qty).toFixed(2)}`);
+
+            return [
+                "🌴 *GOLDEN PALM HARVEST — NEW ORDER*",
+                "--------------------------------",
+                ...lines,
+                "--------------------------------",
+                `Delivery Region: ${region}`,
+                `Subtotal: RM ${subtotal.toFixed(2)}`,
+                `Shipping: ${shipping === 0 ? 'FREE' : 'RM ' + shipping.toFixed(2)}`,
+                `*TOTAL PAYABLE: RM ${total.toFixed(2)}*`,
+                "",
+                "Please share FPX / QR payment details & delivery address confirmation. Terima kasih!"
+            ].join("\n");
+        }
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                showToast("Your Harvest Bag is currently empty.");
+                return;
+            }
+            const msg = buildOrderSummaryText();
+            const waUrl = `https://wa.me/60123889420?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        function confirmDirectOrder() {
+            if (cart.length === 0) {
+                showToast("Please add at least one item to your bag.");
+                return;
+            }
+            const summaryText = buildOrderSummaryText();
+            document.getElementById('order-summary-box').textContent = summaryText;
+            toggleCartDrawer(false);
+
+            const modal = document.getElementById('order-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function copyOrderText() {
+            const text = document.getElementById('order-summary-box').textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast("Order receipt copied to clipboard!");
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('order-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // ==========================================
+        // 6. WHOLESALE FORM, NEWSLETTER & UI HELPERS
+        // ==========================================
+        function submitWholesaleForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('ws-name').value;
+            const company = document.getElementById('ws-company').value;
+            const phone = document.getElementById('ws-phone').value;
+            const volume = document.getElementById('ws-volume').value;
+            const notes = document.getElementById('ws-notes').value;
+
+            const waMsg = [
+                "🌴 *GOLDEN PALM B2B / WHOLESALE INQUIRY*",
+                `Name: ${name}`,
+                `Company: ${company}`,
+                `Contact: ${phone}`,
+                `Volume Tier: ${volume}`,
+                `Details: ${notes}`
+            ].join("\n");
+
+            showToast("Opening WhatsApp Wholesale Desk...");
+            window.open(`https://wa.me/60123889420?text=${encodeURIComponent(waMsg)}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const input = document.getElementById('newsletter-email');
+            if (input.value) {
+                showToast("Welcome! Use code PALM10 for 10% off your order.");
+                input.value = '';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        let toastTimer;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-3');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-3');
+            }, 2800);
+        }
+
+        // Initialize UI on Load
+        renderProducts();
+        renderCart();
+    </script>
+</body>
+</html>
